@@ -5,8 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import com.code.login.backend.Login;
+import com.code.mainMenu.gui.MainMenuFrame;
 //import com.code.mainMenu.gui.MainMenuFrame;
 import com.code.utility.Helper;
+import com.code.utility.StaticElements;
 
 public class LoginFrame extends JFrame implements ActionListener {
 	String userTypeString[] = { "Doctor", "Patient" };
@@ -88,7 +90,12 @@ public class LoginFrame extends JFrame implements ActionListener {
 		if(!userName.isEmpty() && !password.isEmpty()) {
 			Login login = new Login(userName, password, userTypeString[index]);
 			if(login.checkLoginDetailsCorrect()) {
-				//MainMenuFrame frame = new MainMenuFrame();
+				if(index==0) {
+					StaticElements.Doctormail = userName;
+				} else {
+					StaticElements.Patientmail = userName;
+				}
+				MainMenuFrame frame = new MainMenuFrame();
 				this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 			} else {
 				Helper.showWarningBox(this, "Wrong credentials", JOptionPane.ERROR_MESSAGE);

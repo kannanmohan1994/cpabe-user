@@ -93,7 +93,7 @@ public class Cpabe {
 		Common.writeCpabeFile(encfile, cphBuf, aesBuf);
 	}
 
-	public void dec(String pubfile, String prvfile, String encfile,
+	public Boolean dec(String pubfile, String prvfile, String encfile,
 			String decfile) throws Exception {
 		byte[] aesBuf, cphBuf;
 		byte[] plt;
@@ -123,9 +123,11 @@ public class Cpabe {
 		if (beb.b) {
 			plt = AESCoder.decrypt(beb.e.toBytes(), aesBuf);
 			Common.spitFile(decfile, plt);
+			return true;
 		} else {
 			System.exit(0);
 		}
+		return false;
 	}
 
 }

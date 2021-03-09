@@ -537,10 +537,6 @@ public class Bswabe {
 					System.out.println("error parsing " + s
 							+ ": unsatisfiable operator " + tok);
 					return null;
-				} else if (n == 1) {
-					System.out.println("error parsing " + s
-							+ ": indentity operator " + tok);
-					return null;
 				} else if (n > stack.size()) {
 					System.out.println("error parsing " + s
 							+ ": stack underflow at " + tok);
