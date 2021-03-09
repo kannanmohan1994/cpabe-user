@@ -13,26 +13,9 @@ public class CPABEEncrypt {
 	Cpabe cpabe = new Cpabe();
 	String policySet = "";
 	
-	public void getPolicySet() {
-		Connection conn = Connect.startConnection();
-		try {
-			Statement stmt = conn.createStatement();
-			String query = "SELECT * FROM policyset;";
-			ResultSet rs = stmt.executeQuery(query);
-			int count = 0;
-			while(rs.next()) {
-				policySet += rs.getString(2) + " ";
-				count++;
-			}
-			policySet += "1of" + count;
-		} catch (Exception e) {
-			System.out.print(e);
-		} finally {
-			Connect.endConnection(conn);
-		}
-	}
-	
 	public String encryptFile() {
+		PolicyAdministrationPoint pap = new PolicyAdministrationPoint();
+		policySet = pap.getPolicySet();
 		System.out.println("Policy: "+policySet);
 		String result = "";
 		try {

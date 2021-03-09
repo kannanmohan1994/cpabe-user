@@ -18,7 +18,6 @@ public class CPABEDecrypt {
 
 	public Boolean decryptFile() {
 		Boolean isDec = false;
-		System.out.print(attributeSet);
 		try {
 			cpabe.keygen(StaticElements.pubfile, StaticElements.prvfile, StaticElements.mskfile, attributeSet);
 		} catch (Exception e) {

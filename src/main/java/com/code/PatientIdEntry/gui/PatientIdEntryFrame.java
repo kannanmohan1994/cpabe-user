@@ -1,4 +1,5 @@
 package com.code.PatientIdEntry.gui;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
@@ -20,18 +21,19 @@ import javax.swing.JTextField;
 import com.code.PatientIdEntry.backend.PatientIdEntry;
 import com.code.utility.Helper;
 
-public class PatientIdEntryFrame  extends JFrame implements ActionListener {
+public class PatientIdEntryFrame extends JFrame implements ActionListener {
 	public Boolean isView = true;
 	Container container = getContentPane();
 	JLabel idLabel = new JLabel("Patient Id: ");
 	JTextField idField = new JTextField();
 	JButton confirmBtn = new JButton("Confirm");
+
 	public PatientIdEntryFrame() {
 		initialSetup();
 		addComponentsToContainer();
 		addActionEvents();
 	}
-	
+
 	public void initialSetup() {
 		setTitle("Enter patient Id");
 		setVisible(true);
@@ -41,7 +43,7 @@ public class PatientIdEntryFrame  extends JFrame implements ActionListener {
 		setResizable(false);
 		container.setLayout(new BorderLayout());
 	}
-	
+
 	public void addComponentsToContainer() {
 		container.add(setupPanel());
 	}
@@ -49,17 +51,17 @@ public class PatientIdEntryFrame  extends JFrame implements ActionListener {
 	public void addActionEvents() {
 		confirmBtn.addActionListener(this);
 	}
-	
+
 	public Component setupPanel() {
 		GridBagLayout grid = new GridBagLayout();
 		JPanel p = new JPanel(grid);
-		Insets inset = new Insets(5, 10, 5, 10); 
+		Insets inset = new Insets(5, 10, 5, 10);
 		Helper.addCompenenttoGrid(p, idLabel, 0, 1, 1, 1, 1, 1, inset, GridBagConstraints.HORIZONTAL);
 		Helper.addCompenenttoGrid(p, idField, 1, 1, 1, 1, 1, 1, inset, GridBagConstraints.HORIZONTAL);
 		Helper.addCompenenttoGrid(p, confirmBtn, 0, 2, 1, 2, 2, 1, inset, GridBagConstraints.CENTER);
 		return p;
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==confirmBtn) {
 			String result = idField.getText();
@@ -67,15 +69,24 @@ public class PatientIdEntryFrame  extends JFrame implements ActionListener {
 				PatientIdEntry pId = new PatientIdEntry();
 				pId.uPat.emailId = result;
 				pId.actionAttribute = (isView) ? "a:view" : "a:edit";
-				pId.processRequest();
+				switch(pId.processRequest()) {
+				case -1: 
+					Helper.showWarningBox(this, "Patient file doesn't exist!", JOptionPane.ERROR_MESSAGE);
+					break;
+				case 0:
+					Helper.showWarningBox(this, "Access denied!", JOptionPane.ERROR_MESSAGE);
+					break;
+				case 1:
+					Helper.showWarningBox(this, "Access permitted!!", JOptionPane.INFORMATION_MESSAGE);
+					break;
+				}
 			} else {
-				Helper.showWarningBox(this, "Empty username or password", JOptionPane.ERROR_MESSAGE);
+				Helper.showWarningBox(this, "Empty field", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		new PatientIdEntryFrame();
 	}
 }
-	
