@@ -15,6 +15,6 @@ public class StaticElements {
 	public static String encfile = TEMP_FOLDER_PATH + "transmit.json.cpabe";
 	public static String decfile = TEMP_FOLDER_PATH + "PHRFile.json";
 	
-	public static String Doctormail = "johndoe@gmail.com";
+	public static String Doctormail = "";
 	public static String Patientmail = "";
 }

@@ -25,7 +25,9 @@ public class Helper {
 	}
 	
 	public static void addFreshItemsComboBox(JComboBox jc, Vector<String> items) {
-		jc.removeAllItems();
+		if(jc!=null) {
+			jc.removeAllItems();
+		}
 		for(int i=0; i<items.size(); i++) {
 			jc.addItem(items.get(i)); 
 		}

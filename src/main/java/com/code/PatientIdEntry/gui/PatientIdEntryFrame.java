@@ -19,7 +19,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.code.PatientIdEntry.backend.PatientIdEntry;
+import com.code.editUser.backend.EditUser;
+import com.code.editUser.gui.EditUserFrame;
 import com.code.utility.Helper;
+import com.code.viewUser.gui.ViewUserFrame;
 
 public class PatientIdEntryFrame extends JFrame implements ActionListener {
 	public Boolean isView = true;
@@ -77,7 +80,12 @@ public class PatientIdEntryFrame extends JFrame implements ActionListener {
 					Helper.showWarningBox(this, "Access denied!", JOptionPane.ERROR_MESSAGE);
 					break;
 				case 1:
-					Helper.showWarningBox(this, "Access permitted!!", JOptionPane.INFORMATION_MESSAGE);
+					if(isView) {
+						ViewUserFrame frame = new ViewUserFrame();
+					} else {
+						EditUserFrame frame = new EditUserFrame();
+					}
+					this.dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
 					break;
 				}
 			} else {
