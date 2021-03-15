@@ -1,6 +1,6 @@
 # cpabe-user
 
-A cpabe application in PHR environment that lets doctor's and patient's to access PHR based on the access control policies specified. The access control policies and users in this application are added using an admin application. The following is the link to admin application:
+A cpabe application in PHR environment that lets doctor's and patient's to access PHR based on the access control policies specified. The access control policies and users in this application are added using an admin application. First go through with the installation of admin app and then download this. The following is the link to admin application:
 
 https://github.com/kannanmohan1994/cpabe-admin/
 
