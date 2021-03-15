@@ -41,9 +41,9 @@ public class PolicyInformationPoint {
 			String query = "Select * from patient where emailid ='" + emailId + "';";
 			ResultSet rs = stmt.executeQuery(query);
 			if (rs.next()) {
-				resourceAttributes += "p:" + rs.getString(1) + " ";
-				resourceAttributes += "p:" + rs.getString(3) + " ";
-				resourceAttributes += "p:" + rs.getString(4);
+				resourceAttributes += "phr:" + rs.getString(1) + " ";
+				resourceAttributes += "phr:" + rs.getString(3) + " ";
+				resourceAttributes += "phr:" + rs.getString(4);
 			}
 		} catch (Exception e) {
 			System.out.print(e);

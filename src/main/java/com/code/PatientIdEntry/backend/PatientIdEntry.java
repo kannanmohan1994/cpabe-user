@@ -3,6 +3,7 @@ package com.code.PatientIdEntry.backend;
 import com.code.accesscontrol.AccessControlClient;
 import com.code.accesscontrol.AccessControlServer;
 import com.code.userobjects.UserPatient;
+import com.code.utility.StaticElements;
 
 public class PatientIdEntry {
 	public UserPatient uPat;
@@ -16,7 +17,8 @@ public class PatientIdEntry {
 		AccessControlClient client = new AccessControlClient();
 		if(server.transmitFile()) {
 			client.actionAttribute = actionAttribute;
-			if(client.receiveFile(uPat.emailId) == 1) {
+			System.out.println("mail: "+StaticElements.Patientmail);
+			if((uPat.emailId.trim().equals(StaticElements.Patientmail)) || (client.receiveFile(uPat.emailId) == 1)) {
 				return 1; //Access permit
 			} else {
 				return 0; //Access denied
