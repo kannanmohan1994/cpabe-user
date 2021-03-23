@@ -8,6 +8,7 @@ public class StaticElements {
 	public static int ACCESS_PERMIT = 1;
 	
 	public static String TEMP_FOLDER_PATH = "temp/";
+	//Set the below path to the temp folder in admin
 	public static String TEMP_FOLDER_PATH_SERVER = "D:\\MajorProjectWorkspace\\cpabe-admin\\temp\\";
 	public static String pubfile = TEMP_FOLDER_PATH + "pub_key";
 	public static String mskfile = TEMP_FOLDER_PATH + "master_key";
