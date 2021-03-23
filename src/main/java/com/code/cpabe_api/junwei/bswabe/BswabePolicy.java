@@ -1,10 +1,12 @@
 package com.code.cpabe_api.junwei.bswabe;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import it.unisa.dia.gas.jpbc.Element;
 
-public class BswabePolicy {
+public class BswabePolicy implements Serializable{
+	private static final long serialVersionUID = 1L;
 	/* serialized */
 	
 	/* k=1 if leaf, otherwise threshould */

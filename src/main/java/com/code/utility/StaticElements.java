@@ -8,12 +8,14 @@ public class StaticElements {
 	public static int ACCESS_PERMIT = 1;
 	
 	public static String TEMP_FOLDER_PATH = "temp/";
+	public static String TEMP_FOLDER_PATH_SERVER = "D:\\MajorProjectWorkspace\\cpabe-admin\\temp\\";
 	public static String pubfile = TEMP_FOLDER_PATH + "pub_key";
 	public static String mskfile = TEMP_FOLDER_PATH + "master_key";
 	public static String prvfile = TEMP_FOLDER_PATH + "prv_key";
 	public static String inputfile = TEMP_FOLDER_PATH + "transmit.json";
 	public static String encfile = TEMP_FOLDER_PATH + "transmit.json.cpabe";
 	public static String decfile = TEMP_FOLDER_PATH + "PHRFile.json";
+	public static String policytree = TEMP_FOLDER_PATH_SERVER + "policytree";
 	
 	public static String Doctormail = "";
 	public static String Patientmail = "";

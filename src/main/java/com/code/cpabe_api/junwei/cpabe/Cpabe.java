@@ -10,6 +10,7 @@ import com.code.cpabe_api.junwei.bswabe.BswabeCph;
 import com.code.cpabe_api.junwei.bswabe.BswabeCphKey;
 import com.code.cpabe_api.junwei.bswabe.BswabeElementBoolean;
 import com.code.cpabe_api.junwei.bswabe.BswabeMsk;
+import com.code.cpabe_api.junwei.bswabe.BswabePolicy;
 import com.code.cpabe_api.junwei.bswabe.BswabePrv;
 import com.code.cpabe_api.junwei.bswabe.BswabePub;
 import com.code.cpabe_api.junwei.bswabe.SerializeUtils;
@@ -59,7 +60,7 @@ public class Cpabe {
 		Common.spitFile(prvfile, prv_byte);
 	}
 
-	public void enc(String pubfile, String policy, String inputfile,
+	public void enc(String pubfile, BswabePolicy policy, String inputfile,
 			String encfile) throws Exception {
 		BswabePub pub;
 		BswabeCph cph;

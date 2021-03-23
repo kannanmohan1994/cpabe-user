@@ -225,7 +225,7 @@ public class Bswabe {
 	 * Returns null if an error occured, in which case a description can be
 	 * retrieved by calling bswabe_error().
 	 */
-	public static BswabeCphKey enc(BswabePub pub, String policy)
+	public static BswabeCphKey enc(BswabePub pub, BswabePolicy policy)
 			throws Exception {
 		BswabeCphKey keyCph = new BswabeCphKey();
 		BswabeCph cph = new BswabeCph();
@@ -238,7 +238,7 @@ public class Bswabe {
 		m = pairing.getGT().newElement();
 		cph.cs = pairing.getGT().newElement();
 		cph.c = pairing.getG1().newElement();
-		cph.p = parsePolicyPostfix(policy);
+		cph.p = policy;
 
 		/* compute */
 		m.setToRandom();
