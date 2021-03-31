@@ -1,5 +1,6 @@
 package com.code.accesscontrol;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -19,7 +20,11 @@ public class CPABEEncrypt {
 		policyTree = pap.getPolicySet();
 		String result = "";
 		try {
-			cpabe.setup(StaticElements.pubfile, StaticElements.mskfile);
+			File pubFile = new File(StaticElements.pubfile);
+			File mskfile = new File(StaticElements.mskfile);
+			if(!pubFile.exists() || !mskfile.exists()) {
+				cpabe.setup(StaticElements.pubfile, StaticElements.mskfile);
+			}
 		} catch (Exception e) {
 			result = "Exception occured at setup phase";
 		}

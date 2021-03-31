@@ -18,8 +18,12 @@ public class AccessControlServer {
 				if(uPat.emailId == StaticElements.Patientmail) {
 					return true; //Patient accessing is on file condition bypass everything.
 				}
+				long startTime = System.nanoTime();
 				CPABEEncrypt cpabe = new CPABEEncrypt();
 				cpabe.encryptFile();
+				long endTime = System.nanoTime();
+		        long timeElapsed = endTime - startTime;
+		        System.out.println("Execution time in milliseconds : " + (timeElapsed / 1000000));
 				return true;
 			} else {
 				System.out.println("Exception occurred. Could not create JSON file.");
