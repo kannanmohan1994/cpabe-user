@@ -13,7 +13,7 @@ public class AccessControlClient {
 	public int receiveFile(String mailId) {
 		String result = "Access denied!";
 		resourceAttributes = pip.getResourceAttributes(mailId);
-		requesterAttributes = pip.getRequesterAttributes();
+		requesterAttributes = pip.getRequesterAttributes(!StaticElements.Doctormail.isEmpty(), StaticElements.Doctormail);
 		String attrSet = requesterAttributes + " " + resourceAttributes + " " + actionAttribute;
 		System.out.println(attrSet);
 		CPABEDecrypt cpabe = new CPABEDecrypt(attrSet);

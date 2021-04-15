@@ -9,12 +9,11 @@ import com.code.utility.StaticElements;
 
 public class PolicyInformationPoint {
 
-	public String getRequesterAttributes() {
+	public String getRequesterAttributes(boolean isDoctor, String requesterMailId) {
 		String requesterAttributes = "";
-		Boolean isRequesterDoctor = (!StaticElements.Doctormail.isBlank());
-		String requesterMail = (isRequesterDoctor) ? StaticElements.Doctormail : StaticElements.Patientmail;
-		String requesterTable = (isRequesterDoctor) ? "doctor" : "patient";
-		String attributePrefix = (isRequesterDoctor) ? "d:" : "p:";
+		String requesterMail = requesterMailId;
+		String requesterTable = (isDoctor) ? "doctor" : "patient";
+		String attributePrefix = (isDoctor) ? "d:" : "p:";
 		Connection conn = Connect.startConnection();
 		try {
 			Statement stmt = conn.createStatement();

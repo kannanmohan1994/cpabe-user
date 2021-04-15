@@ -20,17 +20,19 @@ public class EdgeServer {
 			ServerSocket ss=new ServerSocket(6666);  
 			Socket s=ss.accept();   
 			DataInputStream dis=new DataInputStream(s.getInputStream());  
-			String str=(String)dis.readUTF();  
-			receiveFile(str);
+			String str = (String)dis.readUTF();  
+			String[] contents = str.split(" ");
+			receiveFile(contents);
 			//System.out.println("message= "+str);  
 			ss.close();  
 		}catch(Exception e){System.out.println(e);}  
 	}
 	
-	public int receiveFile(String mailId) {
+	public int receiveFile(String[] contents) {
 		String result = "Access denied!";
-		resourceAttributes = pip.getResourceAttributes(mailId);
-		requesterAttributes = pip.getRequesterAttributes();
+		requesterAttributes = pip.getRequesterAttributes(Boolean.parseBoolean(contents[0]), contents[1]);
+		resourceAttributes = pip.getResourceAttributes(contents[2]);
+		actionAttribute = contents[3];
 		String attrSet = requesterAttributes + " " + resourceAttributes + " " + actionAttribute;
 		System.out.println(attrSet);
 		CPABEDecrypt cpabe = new CPABEDecrypt(attrSet);
