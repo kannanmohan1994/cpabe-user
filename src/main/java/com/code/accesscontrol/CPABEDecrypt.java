@@ -17,17 +17,20 @@ public class CPABEDecrypt {
 	}
 
 	public Boolean decryptFile() {
-		Boolean isDec = false;
+		PolicyEvaluationResult per = new PolicyEvaluationResult(false, null, null);
 		try {
 			cpabe.keygen(StaticElements.pubfile, StaticElements.prvfile, StaticElements.mskfile, attributeSet);
 		} catch (Exception e) {
 			System.out.print(e);
 		}
 		try {
-			isDec = cpabe.dec(StaticElements.pubfile, StaticElements.prvfile, StaticElements.encfile, StaticElements.decfile);
+			per = cpabe.partialDecrypt_1(StaticElements.pubfile, StaticElements.prvfile, StaticElements.encfile);
+			if(per.isPolicySatisfy) {
+				cpabe.partialDecrypt_2(per, StaticElements.decfile);
+			}
 		} catch (Exception e) {
 			System.out.print(e);
 		}
-		return isDec;
+		return per.isPolicySatisfy;
 	}
 }

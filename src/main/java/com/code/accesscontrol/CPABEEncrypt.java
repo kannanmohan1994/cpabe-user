@@ -21,8 +21,7 @@ public class CPABEEncrypt {
 		String result = "";
 		try {
 			File pubFile = new File(StaticElements.pubfile);
-			File mskfile = new File(StaticElements.mskfile);
-			if(!pubFile.exists() || !mskfile.exists()) {
+			if(!pubFile.exists()) {
 				cpabe.setup(StaticElements.pubfile, StaticElements.mskfile);
 			}
 		} catch (Exception e) {

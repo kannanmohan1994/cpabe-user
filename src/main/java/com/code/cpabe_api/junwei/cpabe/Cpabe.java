@@ -5,6 +5,7 @@ import it.unisa.dia.gas.jpbc.Element;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
+import com.code.accesscontrol.PolicyEvaluationResult;
 import com.code.cpabe_api.junwei.bswabe.Bswabe;
 import com.code.cpabe_api.junwei.bswabe.BswabeCph;
 import com.code.cpabe_api.junwei.bswabe.BswabeCphKey;
@@ -131,4 +132,43 @@ public class Cpabe {
 		return false;
 	}
 
+	public PolicyEvaluationResult partialDecrypt_1(String pubfile, String prvfile, String encfile) throws Exception {
+		byte[] aesEncFile = {};
+		byte[] aesBuf, cphBuf;
+		byte[] plt;
+		byte[] prv_byte;
+		byte[] pub_byte;
+		byte[][] tmp;
+		BswabeCph cph;
+		BswabePrv prv;
+		BswabePub pub;
+
+		/* get BswabePub from pubfile */
+		pub_byte = Common.suckFile(pubfile);
+		pub = SerializeUtils.unserializeBswabePub(pub_byte);
+
+		/* read ciphertext */
+		tmp = Common.readCpabeFile(encfile);
+		aesBuf = tmp[0];
+		cphBuf = tmp[1];
+		cph = SerializeUtils.bswabeCphUnserialize(pub, cphBuf);
+
+		/* get BswabePrv form prvfile */
+		prv_byte = Common.suckFile(prvfile);
+		prv = SerializeUtils.unserializeBswabePrv(pub, prv_byte);
+
+		BswabeElementBoolean beb = Bswabe.dec(pub, prv, cph);
+		System.err.println("e = " + beb.e.toString());
+		if (beb.b) {
+			return new PolicyEvaluationResult(true, beb.e.toBytes(), aesBuf);
+		} else {
+			System.exit(0);
+		}
+		return new PolicyEvaluationResult(false, aesBuf, aesBuf) ;
+	}
+	
+	public void partialDecrypt_2(PolicyEvaluationResult per, String decfile) throws Exception {
+		byte[] plt = AESCoder.decrypt(per.encFile, per.encFileKey);
+		Common.spitFile(decfile, plt);
+	}
 }

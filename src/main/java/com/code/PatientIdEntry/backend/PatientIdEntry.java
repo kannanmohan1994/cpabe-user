@@ -13,12 +13,12 @@ public class PatientIdEntry {
 		uPat = new UserPatient();
 	}
 	public int processRequest() {
-		AccessControlServer server = new AccessControlServer(uPat);
-		AccessControlClient client = new AccessControlClient();
-		if(server.transmitFile()) {
-			client.actionAttribute = actionAttribute;
+		AccessControlServer cloudServer = new AccessControlServer(uPat);
+		AccessControlClient edgeClient = new AccessControlClient();
+		if(cloudServer.transmitFile()) {
+			edgeClient.actionAttribute = actionAttribute;
 			System.out.println("mail: "+StaticElements.Patientmail);
-			if((uPat.emailId.trim().equals(StaticElements.Patientmail)) || (client.receiveFile(uPat.emailId) == 1)) {
+			if((uPat.emailId.trim().equals(StaticElements.Patientmail)) || (edgeClient.receiveFile(uPat.emailId) == 1)) {
 				return 1; //Access permit
 			} else {
 				return 0; //Access denied

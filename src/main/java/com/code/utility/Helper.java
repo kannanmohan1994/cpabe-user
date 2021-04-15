@@ -18,6 +18,8 @@ import java.util.Vector;
 
 import javax.swing.*;
 
+import com.code.accesscontrol.CPABEEncrypt;
+
 public class Helper {
 	public static void addCompenenttoGrid(JPanel panel, Component comp, int x, int y, int height, int width,
 			double weightx, double weighty, Insets inset, int align) {
@@ -46,7 +48,6 @@ public class Helper {
 
 	/** Read the object from Base64 string. */
 	public static Object objectFromString(String s) {
-		System.out.println("data:"+s);
 		Object o = null;
 		try {
 			byte[] data = Base64.getDecoder().decode(s);
