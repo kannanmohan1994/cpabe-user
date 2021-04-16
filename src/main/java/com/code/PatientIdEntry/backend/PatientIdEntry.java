@@ -1,7 +1,7 @@
 package com.code.PatientIdEntry.backend;
 
-import com.code.accesscontrol.AccessControlClient;
 import com.code.accesscontrol.AccessControlServer;
+import com.code.accesscontrol.client.AccessControlClient;
 import com.code.userobjects.UserPatient;
 import com.code.utility.StaticElements;
 

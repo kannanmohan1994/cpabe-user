@@ -16,7 +16,7 @@ public class CPABEDecrypt {
 		this.attributeSet = attributeSet;
 	}
 
-	public Boolean decryptFile() {
+	public PolicyEvaluationResult edgeServerDecryption() {
 		PolicyEvaluationResult per = new PolicyEvaluationResult(false, null, null);
 		try {
 			cpabe.keygen(StaticElements.pubfile, StaticElements.prvfile, StaticElements.mskfile, attributeSet);
@@ -26,11 +26,24 @@ public class CPABEDecrypt {
 		try {
 			per = cpabe.partialDecrypt_1(StaticElements.pubfile, StaticElements.prvfile, StaticElements.encfile);
 			if(per.isPolicySatisfy) {
-				cpabe.partialDecrypt_2(per, StaticElements.decfile);
+				return per;
 			}
 		} catch (Exception e) {
 			System.out.print(e);
 		}
-		return per.isPolicySatisfy;
+		return null;
+	}
+	
+	public Boolean edgeDeviceDecryption(PolicyEvaluationResult per) {
+		if(per == null) {
+			return false;
+		}
+		try {
+			cpabe.partialDecrypt_2(per, StaticElements.decfile);
+			return true;
+		} catch (Exception e) {
+			System.out.print(e);
+		}
+		return false;
 	}
 }

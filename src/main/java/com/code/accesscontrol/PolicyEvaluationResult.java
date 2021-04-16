@@ -1,6 +1,9 @@
 package com.code.accesscontrol;
 
-public class PolicyEvaluationResult {
+import java.io.Serializable;
+
+public class PolicyEvaluationResult implements Serializable {
+	private static final long serialVersionUID = 1L;
 	public boolean isPolicySatisfy = false;
 	public byte[] encFile = {};
 	public byte[] encFileKey = {};
