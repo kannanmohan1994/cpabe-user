@@ -113,8 +113,9 @@ public class EditUserFrame extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == specialDropDown) {
-			specialTypeString = DatabaseFetch.fetchSpecialDetails();
-			Helper.addFreshItemsComboBox(specialDropDown, specialTypeString);
+			wardTypeString = DatabaseFetch.fetchWardDetails(String.valueOf(specialDropDown.getSelectedItem()));
+			Helper.addFreshItemsComboBox(wardDropDown, wardTypeString);
+			wardDropDown.setSelectedIndex(0);
 		} else if (e.getSource() == updateBtn) {
 			attemptUpdateUser();
 		}

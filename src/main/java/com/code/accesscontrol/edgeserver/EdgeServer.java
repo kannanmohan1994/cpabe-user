@@ -29,7 +29,7 @@ import com.code.utility.StaticElements;
 
 public class EdgeServer extends JFrame implements ActionListener{  
 	Container container = getContentPane();
-	JLabel statusLabel = new JLabel("Running server...");
+	JLabel statusLabel = new JLabel("Waiting for request");
 	JButton offServerBtn = new JButton("ServerOFF");
 	public boolean serverRunning = true;
 	public UserPatient uPat;
@@ -82,7 +82,8 @@ public class EdgeServer extends JFrame implements ActionListener{
 	public void getPHRFilefromCloudServer() {
 		try{  
 			while(serverRunning) {
-			ServerSocket ss=new ServerSocket(6666);  
+				statusLabel.setText("Waiting for request...");
+				ServerSocket ss=new ServerSocket(6666);  
 				Socket s=ss.accept();
 				PrintStream ps = new PrintStream(s.getOutputStream());
 				BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));

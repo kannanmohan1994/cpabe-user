@@ -17,7 +17,6 @@ public class PatientIdEntry {
 		AccessControlClient edgeClient = new AccessControlClient();
 		if(cloudServer.transmitFile()) {
 			edgeClient.actionAttribute = actionAttribute;
-			System.out.println("mail: "+StaticElements.Patientmail);
 			if((uPat.emailId.trim().equals(StaticElements.Patientmail)) || (edgeClient.receiveFile(uPat.emailId) == 1)) {
 				return 1; //Access permit
 			} else {
