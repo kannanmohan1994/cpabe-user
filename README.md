@@ -9,8 +9,8 @@ https://github.com/kannanmohan1994/cpabe-admin/
 2. Run pom.xml for installing dependencies.
 3. Go to com.code.utility package and then to StaticElements.java file. 
    In this file modify the **TEMP_FOLDER_PATH_SERVER** variable to match the path of temp folder in admin app.
-4. LoginFrame.java -> A login portal for patient/doctor opens up. 
-5. EdgeServer.java -> Edge server that waits for requests from user and process requests. Access control policy evaluation of a file takes place here. 
+4. Run LoginFrame.java -> A login portal for patient/doctor opens up. 
+5. Run EdgeServer.java -> Edge server that waits for requests from user and process requests. Access control policy evaluation of a file takes place here. 
 
 **Functionalities of User app:**
 1. Patient can view PHR files based on access provided.
