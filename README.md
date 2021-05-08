@@ -6,6 +6,14 @@ https://github.com/kannanmohan1994/cpabe-admin/
 
 CPABE implementation used in this application is a modification of the CPABE implementation done in https://github.com/junwei-wang/cpabe. In this implementation i have made modifications to both encryption and decryption phases to make use of the edge computing environment.
 
-For going through a demonstration of this app just run the following files:
-1. LoginFrame.java -> A login portal for patient/doctor opens up. 
-2. EdgeServer.java -> Edge server that waits for requests from user and process requests. Access control policy evaluation of a file takes place here. 
+**To run this application:**
+1. First complete installation of admin app.
+2. Run pom.xml for installing dependencies.
+3. Go to com.code.utility package and then to StaticElements.java file. 
+   In this file modify the **TEMP_FOLDER_PATH_SERVER** variable to match the path of temp folder in admin app.
+4. LoginFrame.java -> A login portal for patient/doctor opens up. 
+5. EdgeServer.java -> Edge server that waits for requests from user and process requests. Access control policy evaluation of a file takes place here. 
+
+**Functionalities of User app:**
+1. Patient can view PHR files based on access provided.
+2. Doctor can view/edit PHR files based on access provided. Doctor can also know which all patients are in the system but not their diagnosis details.
