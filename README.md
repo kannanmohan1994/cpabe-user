@@ -5,3 +5,7 @@ A cpabe application in PHR environment that lets doctor's and patient's to acces
 https://github.com/kannanmohan1994/cpabe-admin/
 
 CPABE implementation used in this application is a modification of the CPABE implementation done in https://github.com/junwei-wang/cpabe. In this implementation i have made modifications to both encryption and decryption phases to make use of the edge computing environment.
+
+For going through a demonstration of this app just run the following files:
+1. LoginFrame.java -> A login portal for patient/doctor opens up. 
+2. EdgeServer.java -> Edge server that waits for requests from user and process requests. Access control policy evaluation of a file takes place here. 
