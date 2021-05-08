@@ -4,8 +4,6 @@ A cpabe application in PHR environment that lets doctor's and patient's to acces
 
 https://github.com/kannanmohan1994/cpabe-admin/
 
-CPABE implementation used in this application is a modification of the CPABE implementation done in https://github.com/junwei-wang/cpabe. In this implementation i have made modifications to both encryption and decryption phases to make use of the edge computing environment.
-
 **To run this application:**
 1. First complete installation of admin app.
 2. Run pom.xml for installing dependencies.
